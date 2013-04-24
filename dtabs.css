@@ -1,0 +1,7 @@
+.d-tabs-nav { position: relative; bottom: -1px; height: 32px; }
+.d-tabs-nav ul, .d-tabs-nav li { margin: 0; padding: 0; list-style: none; background: none; }
+.d-tabs-nav li { float: left; margin-right: .5em; padding: 0 1em; height: 32px; background: #ccc; line-height: 32px; }
+.d-tabs-nav li a { color: #000; }
+.d-tabs-nav li.current { background: #333; }
+.d-tabs-nav li.current a { color: #fff; }
+.d-tab { display: none; padding: 1em; background: #bbb; }

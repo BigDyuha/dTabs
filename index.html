@@ -1,0 +1,145 @@
+<!doctype html>
+<head>
+  <title>dTabs</title>
+	<meta charset='utf-8' />
+	<link rel='stylesheet' href='dtabs.css' />
+	<script type="text/javascript" src='http://code.jquery.com/jquery-1.7.1.min.js'></script>
+	<script type="text/javascript" src='dtabs.js'></script>
+	<script type="text/javascript">
+		$(function(){
+
+			$('#d-tabs-0').dTabs();
+
+			$('#d-tabs-1').dTabs({curTab:2});
+
+			$('#d-tabs-2').dTabs({
+				onAfter: function(){
+					alert('onAfter callback fired');
+				}
+			});
+
+		});
+	</script>
+	<style type='text/css'>
+		.d-code { display: block; margin-bottom: 1em; padding: 1em; background: #f0f0f0; overflow: auto; white-space: nowrap; }
+		.d-demo { margin: 0 auto; padding: 1em 0; width: 640px; }
+		sup { font-size: .5em; color: #999; }
+	</style>
+</head>
+<body>
+
+<div class='d-demo'>
+
+	<h1>dTabs jQuery plugin<sup>1.0</sup></h1>
+
+	<p>Licensed under the <a href='http://www.opensource.org/licenses/mit-license.php' target='_blank'>MIT License</a></p>
+
+	<h2>Подключение:</h2>
+	<pre class='d-code'>
+		&lt;link rel='stylesheet' href='dtabs.css' /&gt;<br />
+		&lt;script type='text/javascript' src='http://code.jquery.com/jquery-latest.min.js'&gt;&lt;/script&gt;<br />
+		&lt;script type='text/javascript' src='dtabs.js'&gt;&lt;/script&gt;<br />
+	</pre>
+
+	<h2>Инициализация:</h2>
+	<pre class='d-code'>
+		$('.d-tabs').dTabs();
+	</pre>
+
+	<h2>HTML код:</h2>
+	<p>В самом простум случае надо создать следующий блок на странице:</p>
+	<pre class='d-code'>
+		&lt;div class='d-tabs'&gt;<br /><br />
+		&nbsp;&nbsp;&nbsp;&lt;div class='d-tabs-nav'&gt;&lt;ul&gt;<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href='#'&gt;tab-0&lt;/a&gt;&lt;/li&gt;<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href='#'&gt;tab-1&lt;/a&gt;&lt;/li&gt;<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href='#'&gt;tab-2&lt;/a&gt;&lt;/li&gt;<br />
+		&nbsp;&nbsp;&nbsp;&lt;/ul&gt;&lt;/div&gt;<br /><br />
+		&nbsp;&nbsp;&nbsp;&lt;div class='d-tab'&gt;tab-0&lt;/div&gt;<br />
+		&nbsp;&nbsp;&nbsp;&lt;div class='d-tab'&gt;tab-1&lt;/div&gt;<br />
+		&nbsp;&nbsp;&nbsp;&lt;div class='d-tab'&gt;tab-2&lt;/div&gt;<br /><br />
+		&lt;/div&gt;
+	</pre>
+
+	<h2>Примеры:</h2>
+	<pre class='d-code'>
+		<span style='color:green'>//обычный вызов</span>
+		$('#d-tabs-0').dTabs();<br /><br />
+		<div class='d-tabs' id='d-tabs-0'>
+			<div class='d-tabs-nav'><ul>
+				<li><a href='#'>tab-0</a></li>
+				<li><a href='#'>tab-1</a></li>
+				<li><a href='#'>tab-2</a></li>
+			</ul></div>
+			<div class='d-tab'>tab-0</div>
+			<div class='d-tab'>tab-1</div>
+			<div class='d-tab'>tab-2</div>
+		</div><!-- /d-tabs -->
+	</pre>
+
+	<br />
+
+	<pre class='d-code'>
+		<span style='color:green'>//если требуется после загрузки сделать определенную вкладку активной,<br />необходимо при вызове плагина указать ее порядковый номер в параметре "curTab":</span><br />
+		$('#d-tabs-1').dTabs({curTab:2});<br /><br />
+		<div class='d-tabs' id='d-tabs-1'>
+			<div class='d-tabs-nav'><ul>
+				<li><a href='#'>tab-0</a></li>
+				<li><a href='#'>tab-1</a></li>
+				<li><a href='#'>tab-2</a></li>
+			</ul></div>
+			<div class='d-tab'>tab-0</div>
+			<div class='d-tab'>tab-1</div>
+			<div class='d-tab'>tab-2</div>
+		</div><!-- /d-tabs -->
+	</pre>
+
+	<br />
+
+	<pre class='d-code'>
+		<span style='color:green'>//если требуется после открытия вкладки выполнить переинициализацию каких-либо<br /> дополнительных плагинов или просто выполнить какую-то функцию, необходимо<br />при вызове плагина указать эту функцию в параметре "onAfter":</span><br />
+		$('#d-tabs-2').dTabs({<br />
+		&nbsp;&nbsp;&nbsp;onAfter: function(){<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert('onAfter callback fired');<br />
+		&nbsp;&nbsp;&nbsp;}<br />
+		});<br /><br />
+		<div class='d-tabs' id='d-tabs-2'>
+			<div class='d-tabs-nav'><ul>
+				<li><a href='#'>tab-0</a></li>
+				<li><a href='#'>tab-1</a></li>
+				<li><a href='#'>tab-2</a></li>
+			</ul></div>
+			<div class='d-tab'>tab-0</div>
+			<div class='d-tab'>tab-1</div>
+			<div class='d-tab'>tab-2</div>
+		</div><!-- /d-tabs -->
+	</pre>
+
+	<br />
+
+	<pre class='d-code'>
+		<span style='color:green'>//если же требуется сразу после загрузки страницы выполнить какую-либо функцию,<br />необходимо при вызове плагина указать эту функцию в параметре "onCreate":</span><br />
+		$('#d-tabs-3').dTabs({<br />
+		&nbsp;&nbsp;&nbsp;onCreate: function(){<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert('onCreate callback fired');<br />
+		&nbsp;&nbsp;&nbsp;}<br />
+		});<br />
+	</pre>
+
+	<h2>Сведения:</h2>
+	<ol>
+		<li>Данный плагин работает во всех браузерах;</li>
+		<li>В данном примере не используются никакие графические элементы. Жеаемый вид можно задать через css, не прибегая к редактированию js файла.</li>
+	</ol>
+
+	<h2>Скачать:</h2>
+	<ul>
+		<li><a href='https://raw.github.com/BigDyuha/dTabs/master/dtabs.css' target='_blank'>css</a></li>
+		<li><a href='https://raw.github.com/BigDyuha/dTabs/master/dtabs.js' target='_blank'>js</a></li>
+		<li><a href='https://raw.github.com/BigDyuha/dTabs/master/dtabs.min.css' target='_blank'>js.min</a></li>
+		<li><a href='https://github.com/BigDyuha/dTabs/archive/master.zip' target='_blank'>zip</a></li>
+	</ul>
+
+</div>
+	
+</body></html>
